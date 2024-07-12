@@ -1,0 +1,198 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <article>
+        <section class="slideshowHome" aria-labelledby="slideshow-heading">
+            <h2 id="slideshow-heading" class="sr-only">Slideshow</h2>
+            <div class="sliderHomeContainer clearfix">
+                <div class="rsContent">
+                    <a class="sliderMobile" href="http://www.forest-hill.pro/web/medias/planning-meudon-bds.pdf" title="Je consulte le planning">
+                        <img src="{{ asset('images_webp/SliderPicture/7/5/sliderMobile/32fd4495-7e95-4b9b-a8d1-27077f0399aa.webp') }}" alt="NOUVEAU CLUB FOREST HILL BORD DE SEINE! OUVERT 7 J/7, A 5 MIN DE CHEZ VOUS !" />
+                    </a>
+                    <img src="{{ asset('images_webp/SliderPicture/32fd4495-7e95-4b9b-a8d1-27077f0399aa.webp') }}" class="rsImg" alt="NOUVEAU CLUB FOREST HILL BORD DE SEINE! OUVERT 7 J/7, A 5 MIN DE CHEZ VOUS !" />
+                    <div class="absoluteContainer">
+                        <div class="InnerContent">
+                            <div class="infoBlock">
+                                <div class="titleSlider">NOUVEAU CLUB FOREST HILL BORD DE SEINE! OUVERT 7 J/7, A 5 MIN DE CHEZ VOUS !</div>
+                                <div class="action-cta">
+                                    <a href="http://www.forest-hill.pro/web/medias/planning-meudon-bds.pdf" title="Je consulte le planning">Je consulte le planning</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rsContent">
+                    <a class="sliderMobile" href="https://www.forest-hill.fr/activite/padel" title="Réservez dès maintenant">
+                        <img src="{{ asset('images_webp/SliderPicture/affiche-fh-padel-2023-09-2-page-0001.webp') }}" alt="N°1 du Padel à Paris et en Île-de-France, Forest Hill vous offre 30 pistes dans 3 clubs" />
+                    </a>
+                    <img src="{{ asset('images_webp/SliderPicture/affiche-fh-padel-2023-09-2-page-0001.webp') }}" class="rsImg" alt="N°1 du Padel à Paris et en Île-de-France, Forest Hill vous offre 30 pistes dans 3 clubs" />
+                    <div class="absoluteContainer">
+                        <div class="InnerContent">
+                            <div class="infoBlock">
+                                <div class="titleSlider">N°1 du Padel à Paris et en Île-de-France, Forest Hill vous offre 30 pistes dans 3 clubs</div>
+                                <div class="action-cta">
+                                    <a href="https://www.forest-hill.fr/activite/padel" title="Réservez dès maintenant">Réservez dès maintenant</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="highlight" aria-labelledby="highlight-heading">
+            <h2 id="highlight-heading">Forest Hill : le club aux multiples avantages</h2>
+            <div class="sliderHighlightContainer clearfix">
+                <div class="rsContent">
+                    <div class="iconHighlight"><i class="icon-friends" aria-hidden="true"></i></div>
+                    <h3 class="titleHighlight">Vos amis sont nos amis</h3>
+                    <div class="descriptionHighlight">Avec l’option Friends, emmenez gratuitement la personne de votre choix à votre séance !</div>
+                </div>
+                <div class="rsContent">
+                    <div class="iconHighlight"><i class="icon-open" aria-hidden="true"></i></div>
+                    <h3 class="titleHighlight">Ouvert de 7h à minuit</h3>
+                    <div class="descriptionHighlight">Tôt le matin, ou tard le soir, les portes de votre club sont ouvertes même les jours fériés !</div>
+                </div>
+                <div class="rsContent">
+                    <div class="iconHighlight"><i class="icon-sifflet" aria-hidden="true"></i></div>
+                    <h3 class="titleHighlight">120 coachs disponibles</h3>
+                    <div class="descriptionHighlight">À votre écoute, nos coachs vous feront progresser et seront là pour vous accompagner tout au long de votre séance</div>
+                </div>
+                <div class="rsContent">
+                    <div class="iconHighlight"><i class="icon-plane" aria-hidden="true"></i></div>
+                    <h3 class="titleHighlight">La formule lib’</h3>
+                    <div class="descriptionHighlight">La formule Lib’ vous permet de suspendre votre abonnement dès que vous le souhaitez</div>
+                </div>
+                <div class="rsContent">
+                    <div class="iconHighlight"><i class="icon-swimming-pool" aria-hidden="true"></i></div>
+                    <h3 class="titleHighlight">Aquaboulevard</h3>
+                    <div class="descriptionHighlight">Rendez-vous gratuit et en illimité dans le célèbre parc aquatique !</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="selectClubs" aria-labelledby="selectClubs-heading">
+            <h2 id="selectClubs-heading">Trouvez votre club Forest Hill</h2>
+            <div class="InnerContent">
+                <div class="itemClub">
+                    <figure>
+                        <a href="https://www.forest-hill.fr/club/forest-hill-aquaboulevard" title="Forest Hill Aquaboulevard">
+                            <img src="{{ asset('images_webp/club/club.webp') }}" alt="Forest Hill Aquaboulevard" />
+                        </a>
+                    </figure>
+                    <h3 class="titleHighlight">Forest Hill Aquaboulevard</h3>
+                    <a href="https://www.forest-hill.fr/club/forest-hill-aquaboulevard" title="Découvrir le club">Découvrir le club</a>
+                </div>
+                <div class="itemClub">
+                    <figure>
+                        <a href="https://www.forest-hill.fr/club/forest-hill-la-defense" title="Forest Hill La Défense">
+                            <img src="{{ asset('images_webp/Club/img-fh-defense-1-ok.webp') }}" alt="Forest Hill La Défense" />
+                        </a>
+                    </figure>
+                    <h3 class="titleHighlight">Forest Hill La Défense</h3>
+                    <a href="https://www.forest-hill.fr/club/forest-hill-la-defense" title="Découvrir le club">Découvrir le club</a>
+                </div>
+                <div class="itemClub">
+                    <figure>
+                        <a href="https://www.forest-hill.fr/club/forest-hill-timing-paris-sud" title="Forest Hill Timing Paris Sud">
+                            <img src="{{ asset('images_webp/Club/img-fh-timing-1-ok.webp') }}" alt="Forest Hill Timing Paris Sud" />
+                        </a>
+                    </figure>
+                    <h3 class="titleHighlight">Forest Hill Timing Paris Sud</h3>
+                    <a href="https://www.forest-hill.fr/club/forest-hill-timing-paris-sud" title="Découvrir le club">Découvrir le club</a>
+                </div>
+            </div>
+            <div class="action-cta">
+                <a href="https://www.forest-hill.fr/vos-clubs-a-paris" title="6 clubs en Île de France">6 clubs en Île de France</a>
+            </div>
+        </section>
+
+        <section class="listActivities" aria-labelledby="listActivities-heading">
+            <h2 id="listActivities-heading">Plus de 80 cours et activités à découvrir !</h2>
+            <div class="InnerContent">
+                <div class="activities">
+                    <div class="activitiesContainer">
+                        <div class="itemActivity">
+                            <figure class="banner--activities">
+                                <a href="https://www.forest-hill.fr/activite/dance-hall" title="Ragga Dance Hall">
+                                    <img src="{{ asset('images_webp/Activity/1200x474-zumba.webp') }}" alt="Ragga Dance Hall" />
+                                </a>
+                            </figure>
+                            <h3>
+                                <a href="https://www.forest-hill.fr/activite/dance-hall" title="Ragga Dance Hall">Zumba</a>
+                            </h3>
+                        </div>
+                        <div class="itemActivity">
+                            <figure class="banner--activities">
+                                <a href="https://www.forest-hill.fr/activite/aqua-impact" title="Tai Chi Chuan">
+                                    <img class="img-double" src="{{ asset('images_webp/Activity/1200x474-tai-chi-chuan.webp') }}" alt="Tai Chi Chuan" />
+                                    <img src="{{ asset('images_webp/Activity/1200x474-tai-chi-chuan.webp') }}" alt="Tai Chi Chuan" />
+                                </a>
+                            </figure>
+                            <h3>
+                                <a href="https://www.forest-hill.fr/activite/aqua-impact" title="Tai Chi Chuan">Tai Chi Chuan</a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="activitiesContainer">
+                        <div class="itemActivity">
+                            <figure class="banner--activities">
+                                <a href="https://www.forest-hill.fr/activite/badminton-heures-pleines" title="yoga">
+                                    <img src="{{ asset('images_webp/Activity/1200x474-yoga.webp') }}" alt="yoga" />
+                                </a>
+                            </figure>
+                            <h3>
+                                <a href="https://www.forest-hill.fr/activite/badminton-heures-pleines" title="yoga">yoga</a>
+                            </h3>
+                        </div>
+                        <div class="itemActivity">
+                            <figure class="banner--activities">
+                                <a href="https://www.forest-hill.fr/activite/yoga-ashtanga" title="Cross Training">
+                                    <img src="{{ asset('images_webp/Activity/1200x474-crosstraining.webp') }}" alt="Cross Training" />
+                                </a>
+                            </figure>
+                            <h3>
+                                <a href="https://www.forest-hill.fr/activite/yoga-ashtanga" title="Cross Training">Cross Training</a>
+                            </h3>
+                        </div>
+                        <div class="itemActivity">
+                            <figure class="banner--activities">
+                                <a href="https://www.forest-hill.fr/activite/aqua-sculpt" title="Lia">
+                                    <img src="{{ asset('images_webp/Activity/1200x474-lia.webp') }}" alt="Lia" />
+                                </a>
+                            </figure>
+                            <h3>
+                                <a href="https://www.forest-hill.fr/activite/aqua-sculpt" title="Lia">Lia</a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="activitiesContainer">
+                        <div class="itemActivity">
+                            <figure class="banner--activities">
+                                <a href="https://www.forest-hill.fr/activite/meditation" title="Meditation">
+                                    <img class="img-double" src="{{ asset('images_webp/Activity/1200x474-afro.webp') }}" alt="Afro" />
+                                    <img src="{{ asset('images_webp/Activity/1200x474-afro.webp') }}" alt="Afro" />
+                                </a>
+                            </figure>
+                            <h3>
+                                <a href="https://www.forest-hill.fr/activite/meditation" title="Meditation">Afro</a>
+                            </h3>
+                        </div>
+                        <div class="itemActivity">
+                            <figure class="banner--activities">
+                                <a href="https://www.forest-hill.fr/activite/hiit-strong" title="Posturall Ball">
+                                    <img src="{{ asset('images_webp/img-activity-400x200.webp') }}" alt="Posturall Ball" />
+                                </a>
+                            </figure>
+                            <h3>
+                                <a href="https://www.forest-hill.fr/activite/hiit-strong" title="Posturall Ball">Posturall Ball</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+{% endblock %}

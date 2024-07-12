@@ -1,0 +1,8 @@
+#map_canvas{
+    width: 580px;
+    height: 580px;
+}
+
+.customer-area .list-choice.second-level ul.block-list > li a i.icon-heart-plein:hover { color: #18a396; cursor: pointer; }
+.popin i.icon-heart-plein:hover { color: #18a396; cursor: pointer; }
+i.icon-heart-plein.bookmarked { color: #18a396 !important;}

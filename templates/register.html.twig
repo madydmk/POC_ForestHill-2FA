@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("register-form").submit();
+        }
+    </script>
+</head>
+<body>
+    <div class="container-main my-5">
+        <div class="row w-100 h-100 m-0 content">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-5 mx-auto max-width">
+                <div class="login-card">
+                    <div class="title-card">
+                        <h1 class="title">Inscription</h1>
+                    </div>
+                    <div class="login-form">
+                        <form id="register-form" action="{{ path('register') }}" method="POST">
+                            <div class="input-elements col-12 col-md-10">
+                                <label>Sélectionner votre profil</label>
+                                <div style="display: flex; align-items: center;">
+                                    <span class="required mx-2">*</span>
+                                    <select name="profile" class="custom-input">
+                                        <option value="membre_pacha">Membre Pacha</option>
+                                        <option value="frequence">Carte Fréquence</option>
+                                        <option value="non_membre">Non membre</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-elements col-12 col-md-10">
+                                <label>Prénom</label>
+                                <div style="display: flex; align-items: center;">
+                                    <span class="required mx-2">*</span>
+                                    <input type="text" name="first_name" class="custom-input" placeholder="Prénom" required>
+                                </div>
+                            </div>
+                            <div class="input-elements col-12 col-md-10">
+                                <label>Nom</label>
+                                <div style="display: flex; align-items: center;">
+                                    <span class="required mx-2">*</span>
+                                    <input type="text" name="last_name" class="custom-input" placeholder="Nom" required>
+                                </div>
+                            </div>
+                            <div class="input-elements col-12 col-md-10">
+                                <label>Date de naissance</label>
+                                <div style="display: flex; align-items: center;">
+                                    <span class="required mx-2">*</span>
+                                    <input type="date" name="date_of_birth" class="custom-input" required>
+                                </div>
+                            </div>
+                            <div class="input-elements col-12 col-md-10">
+                                <label>E-mail</label>
+                                <div style="display: flex; align-items: center;">
+                                    <span class="required mx-2">*</span>
+                                    <input type="email" name="email" class="custom-input" placeholder="E-mail" required>
+                                </div>
+                            </div>
+                            <div class="input-elements col-12 col-md-10">
+                                <label>Mot de passe</label>
+                                <div style="display: flex; align-items: center;">
+                                    <span class="required mx-2">*</span>
+                                    <input type="password" name="password" class="custom-input" placeholder="Mot de passe" required>
+                                </div>
+                            </div>
+                            <button class="btn_2fa email-link-btn"
+                                    data-sitekey="6LfmRw0qAAAAAPljNk495vm4eW4Kb7BM8QpPO_LA"
+                                    data-callback="onSubmit"
+                                    data-action="submit">Inscription</button>
+                            <div class="col-12">
+                                <div class="container-forget-pwd d-flex mt-3">
+                                    <a routerlink="/login" class="mx-auto forget-pwd" href="/login">
+                                        <span>Se connecter</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                        {% if errors is defined %}
+                            <div class="alert alert-danger mt-3">
+                                <ul>
+                                    {% for error in errors %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

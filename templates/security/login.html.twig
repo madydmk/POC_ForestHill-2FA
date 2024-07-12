@@ -1,0 +1,57 @@
+{# templates/security/login.html.twig #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+    <div class="container-main my-5">
+        <div class="row w-100 h-100 m-0 content">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-5 mx-auto max-width">
+                <div class="login-card">
+                    <div class="title-card">
+                        <h1 class="title">Connexion</h1>
+                    </div>
+                    <div class="login-form">
+                        <form action="{{ path('login') }}" method="POST">
+                            <div class="input-elements col-12 col-md-10">
+                                <label>E-mail</label>
+                                <div style="display: flex; align-items: center;">
+                                    <span class="required mx-2">*</span>
+                                    <input type="email" name="_username" class="custom-input" placeholder="E-mail" required>
+                                </div>
+                            </div>
+                            <div class="input-elements col-12 col-md-10">
+                                <label>Mot de passe</label>
+                                <div style="display: flex; align-items: center;">
+                                    <span class="required mx-2">*</span>
+                                    <input type="password" name="_password" class="custom-input" placeholder="Mot de passe" required>
+                                </div>
+                            </div>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            <div class="col-12 col-md-8 mx-auto mt-2 mb-3">
+                                <button type="submit" class="email-link-btn">Connexion</button>
+                            </div>
+                            <div class="col-12">
+                                <div class="container-forget-pwd d-flex mt-3">
+                                    <a routerlink="/register" class="mx-auto forget-pwd" href="/register">
+                                        <span>Créer un compte</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                        {% if error %}
+                            <div class="alert alert-danger mt-3">
+                                <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
