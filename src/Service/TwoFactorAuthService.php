@@ -55,4 +55,13 @@ class TwoFactorAuthService
 
         return new Response($result->getString(), 200, ['Content-Type' => 'image/png']);
     }
+    public function displayTotpQrCode(TokenStorageInterface $tokenStorage, TotpAuthenticatorInterface $totpAuthenticator): Response
+    {
+        $user = $tokenStorage->getToken()->getUser();
+        if (!($user instanceof TotpTwoFactorInterface)) {
+            throw new NotFoundHttpException('Cannot display QR code');
+        }
+
+        return $this->displayQrCode($totpAuthenticator->getQRContent($user));
+    }
 }

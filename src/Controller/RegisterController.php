@@ -62,7 +62,7 @@ class RegisterController extends AbstractController
             $this->authenticateUser($user, $request, 'main'); // Utiliser le nom correct du firewall
 
             // Rediriger vers la configuration 2FA
-            return $this->redirectToRoute('2fa_setup');
+            return $this->redirectToRoute('2fa');
         }
 
         return $this->render('register.html.twig');

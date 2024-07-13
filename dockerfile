@@ -34,7 +34,7 @@ RUN chown -R www-data:www-data /var/www/html/var
 RUN chmod -R 775 /var/www/html/var
 
 # Exposer le port 80
-EXPOSE 80
+EXPOSE 3000
 
 # Démarrer Apache
 CMD ["apache2-foreground"]

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Two-Factor Authentication{% endblock %}
+
+{% block body %}
+
+<h1>Two-Factor Authentication</h1>
+
+    {% if not isTwoFactorEnabled and qrCodeUrl %}
+        <p>Scan this QR code with your authenticator app:</p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data={{ qrCodeUrl|url_encode }}" alt="QR Code">
+        <img src="{{ qrCodeUrl }}" alt="QR Code">
+    {% else %}
+        <h2>Setup Two-Factor Authentication</h2>
+        <form action="{{ path('2fa') }}" method="post">
+            <button type="submit" name="setup">Setup 2FA</button>
+        </form>
+    {% endif %}
+
+<h2>Confirm Two-Factor Authentication</h2>
+<form action="{{ path('2fa') }}" method="post">
+    <label for="code">2FA Code:</label>
+    <input type="text" id="code" name="code" required autofocus>
+    <br>
+    <button type="submit" name="confirm">Confirm 2FA</button>
+    {% if error %}
+        <div>{{ error }}</div>
+    {% endif %}
+</form>
+{% endblock %}

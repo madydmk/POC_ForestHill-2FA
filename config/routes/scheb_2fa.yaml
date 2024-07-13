@@ -1,4 +1,4 @@
-2fa_login:
+2fa:
     path: /2fa
     defaults:
         _controller: "scheb_two_factor.form_controller::form"

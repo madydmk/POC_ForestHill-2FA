@@ -10,10 +10,14 @@ use Doctrine\ORM\EntityManagerInterface;
 class EspaceProController extends AbstractController
 {
     #[Route('/espace_pro', name: 'espace_pro')]
-    public function index(): Response
+    public function espace_pro()
     {
-        return $this->render('pro/espace-pro.html.twig', [
-            'controller_name' => 'EspaceProController',
-        ]);
+        $user = $this->getUser();
+        
+        if (!$user) {
+            throw new AccessDeniedException('User not authenticated.');
+        }
+        
+        return $this->render('pro/espace-pro.html.twig');
     }
 }
