@@ -7712,12 +7712,12 @@ div#overmoche {
     opacity: 0
 }
 
-footer {
+/* footer {
     position: relative;
     width: 100%;
     background: #18a396;
     margin: 0 auto
-}
+} */
 
 footer:before,footer:after {
     content: " ";

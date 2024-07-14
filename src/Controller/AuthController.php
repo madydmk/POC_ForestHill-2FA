@@ -7,9 +7,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Service\TwoFactorAuthService;
 
 class AuthController extends AbstractController
 {
+    private $twoFactorAuthService;
+
+    public function __construct(TwoFactorAuthService $twoFactorAuthService)
+    {
+        $this->twoFactorAuthService = $twoFactorAuthService;
+    }
+
     #[Route('/login', name: 'login', methods: ['GET', 'POST'])]
     public function login(Request $request, AuthenticationUtils $authenticationUtils): Response
     {
@@ -18,9 +26,17 @@ class AuthController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         if ($request->isMethod('POST')) {
-            var_dump($request->request);
             return $this->redirectToRoute('2fa');
         }
+
+        if ($this->getUser()) {
+            if($this->twoFactorAuthService->isTwoFactorAuthenticated()){
+                return $this->redirectToRoute('espace-pro');
+            }else{
+                return $this->redirectToRoute('2fa');
+            }
+        }
+
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
@@ -30,6 +46,18 @@ class AuthController extends AbstractController
     #[Route('/logout', name: 'logout')]
     public function logout(): void
     {
-        // Controller can be blank: it will be intercepted by the logout key on your firewall
+        
+    }
+
+    #[Route(path: '/logout_callback', name: 'logout_callback')]
+    public function logoutCallback()
+    {
+        $user = $this->getUser();
+
+        if ($user) {
+            $this->twoFactorAuthService->setTwoFactorAuthenticated(false);
+        }
+
+        return $this->redirectToRoute('login');
     }
 }

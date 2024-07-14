@@ -33,7 +33,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      *@var boolean
-     */
+    */
     #[ORM\Column]
     private $twoFactorEnabled = false;
 

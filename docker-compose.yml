@@ -1,33 +1,32 @@
 version: '3.8'
-
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: symfony_app1
+    container_name: symfony_app
     restart: unless-stopped
     ports:
-      - "8000:3000"
+      - "8000:80"
     volumes:
       - .:/var/www/html
     environment:
-      DATABASE_URL: mysql://root:Diakitem1.@db:3306/forest_hill_2fa
+      DATABASE_URL: mysql://root:password@db/forest_hill_2fa
     depends_on:
       - db
 
   db:
     image: mysql:8.0
-    container_name: symfony_db1
+    container_name: symfony_db
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: Diakitem1.
-      MYSQL_DATABASE: forest_hill_2fa
-      MYSQL_PASSWORD: Diakitem1.
+      MYSQL_ROOT_PASSWORD: W6wAnTifGPb5zQ3J7dj4
+      MYSQL_DATABASE: defaultdb
+      MYSQL_USER: foresthill
+      MYSQL_PASSWORD: AVNS_DwoDr9JK4jKXI-AADKu
     ports:
-      - "3307:3306"
+      - "20184:20184"
     volumes:
       - db_data:/var/lib/mysql
-
 volumes:
   db_data:

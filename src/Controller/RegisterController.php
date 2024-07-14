@@ -59,7 +59,7 @@ class RegisterController extends AbstractController
             $entityManager->flush();
 
             // Authentifier l'utilisateur
-            $this->authenticateUser($user, $request, 'main'); // Utiliser le nom correct du firewall
+            $this->authenticateUser($user, $request, 'main');
 
             // Rediriger vers la configuration 2FA
             return $this->redirectToRoute('2fa');

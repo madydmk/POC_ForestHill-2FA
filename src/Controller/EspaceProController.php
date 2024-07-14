@@ -9,15 +9,27 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class EspaceProController extends AbstractController
 {
-    #[Route('/espace_pro', name: 'espace_pro')]
-    public function espace_pro()
+    private $twoFactorAuthService;
+
+    public function __construct(TwoFactorAuthService $twoFactorAuthService)
+    {
+        $this->twoFactorAuthService = $twoFactorAuthService;
+    }
+    
+    #[Route('/espace-pro', name: 'espace-pro')]
+    public function espacePro()
     {
         $user = $this->getUser();
         
         if (!$user) {
-            throw new AccessDeniedException('User not authenticated.');
+            return $this->redirectToRoute('login');
+        }else if (!$this->twoFactorAuthService->isTwoFactorAuthenticated()){
+            return $this->redirectToRoute('2fa');
         }
-        
-        return $this->render('pro/espace-pro.html.twig');
+
+        return $this->render('pro/espace-pro.html.twig', [
+            'user' => $user,
+            'controller_name' => 'EspaceProController',
+        ]);
     }
 }

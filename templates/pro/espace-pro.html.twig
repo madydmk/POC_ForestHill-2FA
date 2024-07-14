@@ -1,8 +1,18 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Espace Professionnel{% endblock %}
+{# templates/espace-pro.html.twig #}
 
 {% block body %}
-<h1>Bienvenue dans votre espace professionnel</h1>
-<p>Contenu de l'espace professionnel...</p>
+<div class="container">
+    <div class="header">
+        <h1>Espace Professionnel</h1>
+        <div class="buttons">
+            <p>Utilisateur: {{ app.user.email }} </p>
+            <a href="{{ path('logout') }}" class="btn btn-danger">Se déconnecter</a>
+            <a href="{{ path('app_home') }}" class="btn btn-primary">Accueil</a>
+        </div>
+    </div>
+    <div class="content"> 
+        <p>{{ app.user.email }}, bienvenue sur votre espace pro</p>
+        <!-- Ajoutez ici le contenu spécifique à l'Espace Pro -->
+    </div>
+</div>
 {% endblock %}

@@ -1,30 +1,61 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Two-Factor Authentication{% endblock %}
-
-{% block body %}
-
-<h1>Two-Factor Authentication</h1>
-
-    {% if not isTwoFactorEnabled and qrCodeUrl %}
-        <p>Scan this QR code with your authenticator app:</p>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data={{ qrCodeUrl|url_encode }}" alt="QR Code">
-        <img src="{{ qrCodeUrl }}" alt="QR Code">
-    {% else %}
-        <h2>Setup Two-Factor Authentication</h2>
-        <form action="{{ path('2fa') }}" method="post">
-            <button type="submit" name="setup">Setup 2FA</button>
-        </form>
-    {% endif %}
-
-<h2>Confirm Two-Factor Authentication</h2>
-<form action="{{ path('2fa') }}" method="post">
-    <label for="code">2FA Code:</label>
-    <input type="text" id="code" name="code" required autofocus>
-    <br>
-    <button type="submit" name="confirm">Confirm 2FA</button>
-    {% if error %}
-        <div>{{ error }}</div>
-    {% endif %}
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="buttons">
+            <p>Utilisateur: {{ app.user.email }} </p>
+            <a href="{{ path('logout') }}" class="btn btn-danger">Se déconnecter</a>
+            <a href="{{ path('app_home') }}" class="btn btn-primary">Accueil</a>
+        </div>
+    </div>
+    <div class="container-main my-5">
+        <div class="row w-100 h-100 m-0 content">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-5 mx-auto max-width">
+                <div class="login-card">
+                    <div class="title-card">
+                        <h1 class="title">Authentification à deux facteurs</h1>
+                    </div>
+                    <div class="login-form">
+                        {% if not isTwoFactorEnabled %}
+                            <div class="input-elements col-12 col-md-10">
+                                <h2>Configurer l'authentification à deux facteurs</h2>
+                                {% if qrCodeUrl %}
+                                    <p>Scannez ce QR code avec votre application d'authentification :</p>
+                                    <img class="qrcode-img" src="https://api.qrserver.com/v1/create-qr-code/?data={{ qrCodeUrl|url_encode }}" alt="QR Code">
+                                {% else %}
+                                    <form action="{{ path('2fa') }}" method="POST">
+                                        <button type="submit" name="setup" class="email-link-btn">Configurer 2FA</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                        <form action="{{ path('2fa') }}" method="POST">
+                            <div class="input-elements col-12 col-md-10">
+                                <label for="code">Code 2FA</label>
+                                <div style="display: flex; align-items: center;">
+                                    <span class="required mx-2">*</span>
+                                    <input type="text" id="code" name="code" class="custom-input" placeholder="Code 2FA" required autofocus>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-8 mx-auto mt-2 mb-3">
+                                <button type="submit" name="confirm" class="email-link-btn">Confirmer 2FA</button>
+                            </div>
+                            {% if error %}
+                                <div class="alert alert-danger mt-3">
+                                    <p>{{ error }}</p>
+                                </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

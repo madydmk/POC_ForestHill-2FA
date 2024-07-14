@@ -48,6 +48,7 @@ class TwoFactorController extends AbstractController
         if (!$user->isTwoFactorEnabled() && $request->isMethod('POST') && $request->request->get('setup') !== null) {
             $secret = $this->twoFactorAuthService->generateSecret();
             $user->setTwoFactorSecret($secret);
+            
             $this->entityManager->flush();
         }
 
@@ -59,16 +60,17 @@ class TwoFactorController extends AbstractController
             $code = $request->request->get('code');
             if ($this->twoFactorAuthService->validateCode($secret, $code)) {
                 $user->setTwoFactorEnabled(true);
+                $this->twoFactorAuthService->setTwoFactorAuthenticated(true);
                 $this->entityManager->flush();
                              // Update the security token to include ROLE_2FA_COMPLETE
-                $token = new UsernamePasswordToken($user, null, 'main', ['ROLE_2FA_COMPLETE']);
-                $this->container->get('security.token_storage')->setToken($token);
+                // $token = new UsernamePasswordToken($user, null, 'main', ['ROLE_2FA_COMPLETE']);
+                // $this->container->get('security.token_storage')->setToken($token);
 
-                // Fire the login event
-                $event = new InteractiveLoginEvent($request, $token);
-                $this->eventDispatcher->dispatch($event, 'security.interactive_login');
-
-                return $this->redirectToRoute('espace_pro');
+                // // Fire the login event
+                // $event = new InteractiveLoginEvent($request, $token);
+                // $this->eventDispatcher->dispatch($event, 'security.interactive_login');
+                $user->setTwoFactorEnabled(true);
+                return $this->redirectToRoute('espace-pro');
             } else {
                 $error = 'Invalid 2FA code.';
             }

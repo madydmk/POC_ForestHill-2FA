@@ -6,7 +6,9 @@ controllers:
 security_login:
     path: /login
     controller: App\Controller\AuthController::login
-
 security_logout:
     path: /logout
     controller: App\Controller\AuthController::logout
+security_espace-pro:
+    path: /espace-pro
+    controller: App\Controller\EspaceProController::espacePro

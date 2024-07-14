@@ -11,9 +11,28 @@ use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class TwoFactorAuthService
 {
+    private $requestStack;
+
+    public function __construct(RequestStack $requestStack)
+    {
+        $this->requestStack = $requestStack;
+    }
+
+    public function isTwoFactorAuthenticated(): bool
+    {
+        $session = $this->requestStack->getSession();
+        return $session->get('isTwoFactorAuthenticated', false);
+    }
+
+    public function setTwoFactorAuthenticated(bool $authenticated): void
+    {
+        $session = $this->requestStack->getSession();
+        $session->set('isTwoFactorAuthenticated', $authenticated);
+    }
     public function generateSecret(): string
     {
         $totp = TOTP::create();
@@ -64,4 +83,19 @@ class TwoFactorAuthService
 
         return $this->displayQrCode($totpAuthenticator->getQRContent($user));
     }
+
+    // public function isTwoFactorAuthenticated(): bool
+    // {
+    //     return $this->$requestStack->getSession()->get('isTwoFactorAuthenticated', false);
+    // }
+
+    // public function setTwoFactorAuthenticated(bool $status): void
+    // {
+    //     $this->$requestStack->getSession()->set('isTwoFactorAuthenticated', $status);
+    // }
+
+    // public function clearTwoFactorAuthenticated(): void
+    // {
+    //     $this->$requestStack->getSession()->remove('isTwoFactorAuthenticated');
+    // }
 }
